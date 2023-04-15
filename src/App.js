@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import Home from "./Home";
 
-function App() {
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { useState } from "react";
+import NoteDetail from "./NoteDetail";
+import Create from "./Create";
+import Edit from "./Edit";
+
+export default function App() {
+  const [list, setList] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <h1>Notes App</h1>
+        <Link to="/home">Home</Link>
+        <Link to="/create">Create</Link>
+      </div>
+      <Routes>
+        <Route path="/home" element={<Home list={list} setList={setList} />} />
+        <Route
+          path="/create"
+          element={<Create list={list} setList={setList} />}
+        />
+        <Route
+          path="/item/:id"
+          element={<NoteDetail list={list} setList={setList} />}
+        />
+
+        <Route
+          path="/edit/item/:id"
+          element={<Edit list={list} setList={setList} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
