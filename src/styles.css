@@ -1,5 +1,6 @@
 body {
   background-color: rgb(92, 170, 196);
+  overflow: hidden;
 }
 
 a {
@@ -17,7 +18,8 @@ a {
 }
 
 .note-detail {
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   border: 1px solid black;
   background-color: coral;
   display: flex;
@@ -64,7 +66,8 @@ a {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   background-color: coral;
   border-radius: 10px;
 }
@@ -104,10 +107,29 @@ textarea {
   color: black;
   text-transform: uppercase;
   text-align: center;
-  width: 80%;
+  width: 90%;
+  max-width: 500px;
   margin: 10px auto;
   padding: 10px;
-  border: 1px solid black;
   border-radius: 10px;
-  border: none;
+}
+
+@media (min-width: 768px) {
+  /* adjust styles for tablets and larger screens */
+  .note-detail,
+  .create,
+  .list-notes {
+    width: 60%;
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* adjust styles for desktops and larger screens */
+  .note-detail,
+  .create,
+  .list-notes {
+    width: 50%;
+    max-width: 1000px;
+  }
 }
